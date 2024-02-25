@@ -1,11 +1,11 @@
 package com.example.CampusCourseSystem.models;
 
-import com.example.CampusCourseSystem.enums.SystemRole;
+import com.example.CampusCourseSystem.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -21,8 +21,7 @@ public class User {
     private String fullName;
 
     @Column(name = "birth_date", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate birthDate;
+    private LocalDateTime birthDate;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -33,12 +32,10 @@ public class User {
     @Column(nullable = false)
     private String confirmPassword;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles")
+    @Enumerated(value = EnumType.STRING)
     private Set<Role> roles;
 
 }

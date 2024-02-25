@@ -1,21 +1,40 @@
 package com.example.CampusCourseSystem.controller;
 
 import com.example.CampusCourseSystem.dto.*;
+import com.example.CampusCourseSystem.dto.validation.OnCreate;
+import com.example.CampusCourseSystem.mappers.UserMapper;
+import com.example.CampusCourseSystem.models.User;
+import com.example.CampusCourseSystem.security.JwtEntity;
+import com.example.CampusCourseSystem.services.AuthService;
+import com.example.CampusCourseSystem.services.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/accounts")
+@RequiredArgsConstructor
 public class AccountController {
 
+    private final UserService userService;
+    private final AuthService authService;
+    private final UserMapper userMapper;
     @PostMapping("/registration")
-    public ResponseEntity<?> registerUser(@RequestBody UserRegisterModel userRegisterModel) {
-        return ResponseEntity.ok().body("Регистрация прошла успешно");
+    public ResponseEntity<?> registerUser(@Validated(OnCreate.class) @RequestBody UserRegisterModel userRegisterModel) {
+        User user = userMapper.toEntity(userRegisterModel);
+        TokenResponse tokenResponse = authService.register(user);
+        log.info("token created");
+        return ResponseEntity.ok(tokenResponse);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody UserLoginModel userLoginModel) {
-        return ResponseEntity.ok().body(new TokenResponse("..."));
+    public ResponseEntity<?> loginUser(@Validated @RequestBody UserLoginModel userLoginModel) {
+
+        return ResponseEntity.ok(authService.login(userLoginModel));
     }
 
     @PostMapping("/logout")
@@ -24,13 +43,23 @@ public class AccountController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<?> getUserProfile() {
-        return ResponseEntity.ok().body("...");
+    public ResponseEntity<?> getUserProfile(@AuthenticationPrincipal JwtEntity jwtEntity) {
+        return ResponseEntity.ok(userMapper.toDto(userService.getById(jwtEntity.getId())));
     }
 
 
     @PutMapping("/profile")
-    public ResponseEntity<?> editUserProfile (@RequestBody EditUserProfileModel editUserProfileModel) {
-        return ResponseEntity.ok().body("Профиль успешно обновлен");
+    public ResponseEntity<?> editUserProfile (@AuthenticationPrincipal JwtEntity jwtEntity, @RequestBody EditUserProfileModel editUserProfileModel) {
+
+        userService.editUserProfile(jwtEntity.getId(), editUserProfileModel);
+        return ResponseEntity.ok().build();
     }
+
+
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshToken(@RequestBody String refreshToken) {
+        return ResponseEntity.ok(authService.refreshToken(refreshToken));
+    }
+
+
 }

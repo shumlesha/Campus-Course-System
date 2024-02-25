@@ -45,4 +45,8 @@ public class CampusCourse {
 
     @OneToMany(mappedBy = "campusCourse", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Notification> notifications;
+
+    @ManyToOne
+    @JoinColumn(name = "campus_group_id")
+    private CampusGroup campusGroup;
 }
