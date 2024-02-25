@@ -1,6 +1,6 @@
 package com.example.CampusCourseSystem.models;
 
-import com.example.CampusCourseSystem.enums.CourseSTatuses;
+import com.example.CampusCourseSystem.enums.CourseStatuses;
 import com.example.CampusCourseSystem.enums.Semesters;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,7 +34,7 @@ public class CampusCourse {
     private Semesters semester;
 
     @Enumerated(EnumType.STRING)
-    private CourseSTatuses courseStatus;
+    private CourseStatuses courseStatus;
 
 
     @OneToMany(mappedBy = "campusCourse", cascade = CascadeType.ALL, orphanRemoval = true)

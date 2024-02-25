@@ -3,6 +3,7 @@ package com.example.CampusCourseSystem.exceptions;
 
 import com.example.CampusCourseSystem.dto.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestControllerAdvice
 public class CustomExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -33,7 +35,7 @@ public class CustomExceptionHandler {
         return new ErrorResponse(e.getMessage());
     }
 
-    @ExceptionHandler(AccessDeniedException.class)
+    @ExceptionHandler({AccessDeniedException.class, org.springframework.security.access.AccessDeniedException.class})
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public ErrorResponse handleAccessDenied() {
         return new ErrorResponse("Access denied");
@@ -64,6 +66,7 @@ public class CustomExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleException(Exception e) {
+        log.error(e.getMessage(), e.getLocalizedMessage());
         return new ErrorResponse("Internal error");
     }
 }
