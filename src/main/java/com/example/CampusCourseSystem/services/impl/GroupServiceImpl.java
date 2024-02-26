@@ -1,9 +1,9 @@
 package com.example.CampusCourseSystem.services.impl;
 
-import com.example.CampusCourseSystem.dto.CampusCourseDTO;
-import com.example.CampusCourseSystem.dto.CampusGroupDTO;
-import com.example.CampusCourseSystem.dto.CreateCampusGroupModel;
-import com.example.CampusCourseSystem.dto.EditCampusGroupModel;
+import com.example.CampusCourseSystem.dto.CampusCourse.CampusCourseDTO;
+import com.example.CampusCourseSystem.dto.CampusGroup.CampusGroupDTO;
+import com.example.CampusCourseSystem.dto.CampusGroup.CreateCampusGroupModel;
+import com.example.CampusCourseSystem.dto.CampusGroup.EditCampusGroupModel;
 import com.example.CampusCourseSystem.exceptions.ResourceNotFoundException;
 import com.example.CampusCourseSystem.mappers.CampusCourseMapper;
 import com.example.CampusCourseSystem.mappers.CampusGroupMapper;

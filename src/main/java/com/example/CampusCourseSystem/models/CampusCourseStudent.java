@@ -3,18 +3,22 @@ package com.example.CampusCourseSystem.models;
 import com.example.CampusCourseSystem.enums.StudentMarks;
 import com.example.CampusCourseSystem.enums.StudentStatuses;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "campus_course_students")
 public class CampusCourseStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "campus_course_id")
     private CampusCourse campusCourse;

@@ -1,4 +1,4 @@
-package com.example.CampusCourseSystem.dto;
+package com.example.CampusCourseSystem.dto.Account;
 
 import com.example.CampusCourseSystem.dto.validation.OnCreate;
 import com.example.CampusCourseSystem.dto.validation.OnUpdate;

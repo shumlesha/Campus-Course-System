@@ -1,4 +1,4 @@
-package com.example.CampusCourseSystem.dto;
+package com.example.CampusCourseSystem.dto.CampusCourse;
 
 import com.example.CampusCourseSystem.enums.CourseStatuses;
 import com.example.CampusCourseSystem.enums.Semesters;

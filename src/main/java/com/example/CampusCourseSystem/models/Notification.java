@@ -2,6 +2,8 @@ package com.example.CampusCourseSystem.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.UUID;
 
@@ -19,6 +21,8 @@ public class Notification {
     @Column(name = "is_important")
     private boolean isImportant;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "campus_course_id")
     private CampusCourse campusCourse;

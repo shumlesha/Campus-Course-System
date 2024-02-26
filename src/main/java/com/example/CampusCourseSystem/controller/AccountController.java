@@ -1,6 +1,9 @@
 package com.example.CampusCourseSystem.controller;
 
 import com.example.CampusCourseSystem.dto.*;
+import com.example.CampusCourseSystem.dto.Account.EditUserProfileModel;
+import com.example.CampusCourseSystem.dto.Account.UserLoginModel;
+import com.example.CampusCourseSystem.dto.Account.UserRegisterModel;
 import com.example.CampusCourseSystem.dto.validation.OnCreate;
 import com.example.CampusCourseSystem.mappers.UserMapper;
 import com.example.CampusCourseSystem.models.User;

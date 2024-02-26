@@ -1,4 +1,4 @@
-package com.example.CampusCourseSystem.dto;
+package com.example.CampusCourseSystem.dto.CampusGroup;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

@@ -2,6 +2,8 @@ package com.example.CampusCourseSystem.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.UUID;
 
@@ -13,6 +15,8 @@ public class CampusCourseTeacher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "campus_course_id")
     private CampusCourse campusCourse;

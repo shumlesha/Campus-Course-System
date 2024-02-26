@@ -1,7 +1,7 @@
 package com.example.CampusCourseSystem.services.impl;
 
 import com.example.CampusCourseSystem.dto.TokenResponse;
-import com.example.CampusCourseSystem.dto.UserLoginModel;
+import com.example.CampusCourseSystem.dto.Account.UserLoginModel;
 import com.example.CampusCourseSystem.enums.Role;
 import com.example.CampusCourseSystem.models.User;
 import com.example.CampusCourseSystem.repository.UserRepository;
@@ -9,7 +9,6 @@ import com.example.CampusCourseSystem.security.JwtTokenProvider;
 import com.example.CampusCourseSystem.services.AuthService;
 import com.example.CampusCourseSystem.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

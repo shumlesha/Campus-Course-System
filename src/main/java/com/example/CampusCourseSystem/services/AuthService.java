@@ -1,7 +1,7 @@
 package com.example.CampusCourseSystem.services;
 
 import com.example.CampusCourseSystem.dto.TokenResponse;
-import com.example.CampusCourseSystem.dto.UserLoginModel;
+import com.example.CampusCourseSystem.dto.Account.UserLoginModel;
 import com.example.CampusCourseSystem.models.User;
 
 public interface AuthService {

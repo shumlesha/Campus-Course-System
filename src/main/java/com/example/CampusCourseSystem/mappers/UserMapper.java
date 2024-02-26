@@ -1,6 +1,6 @@
 package com.example.CampusCourseSystem.mappers;
 
-import com.example.CampusCourseSystem.dto.UserRegisterModel;
+import com.example.CampusCourseSystem.dto.Account.UserRegisterModel;
 import com.example.CampusCourseSystem.models.User;
 import org.mapstruct.Mapper;
 

@@ -1,4 +1,4 @@
-package com.example.CampusCourseSystem.dto;
+package com.example.CampusCourseSystem.dto.CampusGroup;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,9 @@
 package com.example.CampusCourseSystem.controller;
 
-import com.example.CampusCourseSystem.dto.*;
-import com.example.CampusCourseSystem.models.CampusGroup;
+import com.example.CampusCourseSystem.dto.CampusCourse.CampusCourseDTO;
+import com.example.CampusCourseSystem.dto.CampusGroup.CampusGroupDTO;
+import com.example.CampusCourseSystem.dto.CampusGroup.CreateCampusGroupModel;
+import com.example.CampusCourseSystem.dto.CampusGroup.EditCampusGroupModel;
 import com.example.CampusCourseSystem.services.GroupService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
